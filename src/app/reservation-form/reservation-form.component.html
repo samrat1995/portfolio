@@ -1,0 +1,40 @@
+<p>reservation-form works!</p>
+
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">   <!--we use the formGroup attribute and the binder reservationForm from the html to link it to ts class--><!--like there is a click event in a button there is also a submit event known as ngSubmit event in forms which calls a method onSubmit which we will design-->
+    <div>
+        <label>CheckIn Date:</label>
+        <input type="date" formControlName = "checkInDate">
+        <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
+          Please enter Checkin Date
+        </div>
+    </div>
+    <div>
+        <label>CheckOut Date:</label>
+        <input type="date" formControlName = "checkOutDate">
+        <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched" >
+            Please enter CheckOut Date
+        </div>
+    </div>
+    <div>
+        <label>Guest Name :</label>
+        <input type="text" formControlName = "guestName">
+        <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
+            Please enter Guest Name
+        </div>
+    </div>
+    <div>
+        <label>Guest Email :</label>
+        <input type="email" formControlName = "guestEmail">
+        <div *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">
+            Please enter Guest Email
+        </div>
+    </div>
+    <div>
+        <label>Room Number:</label>
+        <input type="number" formControlName = "roomNumber">
+        <div *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
+            Please enter Room Number
+        </div>
+    </div>
+    <button type="submit" [disabled]="reservationForm.invalid">Submit</button>
+</form>
